@@ -5,3 +5,5 @@
 *Thumbs.db
 /interface/build
 /interface/node_modules
+
+.vscode/
