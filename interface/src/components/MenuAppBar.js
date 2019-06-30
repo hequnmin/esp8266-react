@@ -30,6 +30,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 
+import GraphicEq from '@material-ui/icons/GraphicEq';
+
 import { APP_NAME } from '../constants/App';
 import { withAuthenticationContext } from '../authentication/Context.js';
 
@@ -135,6 +137,12 @@ class MenuAppBar extends React.Component {
               <AccessTimeIcon />
             </ListItemIcon>
             <ListItemText primary="Network Time" />
+          </ListItem>
+          <ListItem to='/motor/' selected={path.startsWith('/motor/')} button component={Link}>
+            <ListItemIcon>
+              <GraphicEq />
+            </ListItemIcon>
+            <ListItemText primary="Motor Servo" />
           </ListItem>
           <ListItem to='/security/' selected={path.startsWith('/security/')} button component={Link} disabled={!authenticationContext.isAdmin()}>
             <ListItemIcon>
