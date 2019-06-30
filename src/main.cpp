@@ -16,11 +16,14 @@
 #include <NTPSettingsService.h>
 #include <OTASettingsService.h>
 #include <AuthenticationService.h>
+#include <silkworm/MotorSettingsService.h>
+
 #include <WiFiScanner.h>
 #include <WiFiStatus.h>
 #include <NTPStatus.h>
 #include <APStatus.h>
 #include <SystemStatus.h>
+#include <silkworm/MotorStatus.h>
 
 #define SERIAL_BAUD_RATE 115200
 
@@ -32,12 +35,14 @@ APSettingsService apSettingsService = APSettingsService(&server, &SPIFFS, &secur
 NTPSettingsService ntpSettingsService = NTPSettingsService(&server, &SPIFFS, &securitySettingsService);
 OTASettingsService otaSettingsService = OTASettingsService(&server, &SPIFFS, &securitySettingsService);
 AuthenticationService authenticationService = AuthenticationService(&server, &securitySettingsService);
+MotorSettingsService motorSettingsService = MotorSettingsService(&server, &SPIFFS, &securitySettingsService);
 
 WiFiScanner wifiScanner = WiFiScanner(&server, &securitySettingsService);
 WiFiStatus wifiStatus = WiFiStatus(&server, &securitySettingsService);
 NTPStatus ntpStatus = NTPStatus(&server, &securitySettingsService);
 APStatus apStatus = APStatus(&server, &securitySettingsService);
-SystemStatus systemStatus = SystemStatus(&server, &securitySettingsService);;
+SystemStatus systemStatus = SystemStatus(&server, &securitySettingsService);
+MotorStatus motorStatus = MotorStatus(&server, &securitySettingsService);
 
 void setup() {
   // Disable wifi config persistance and auto reconnect
@@ -61,6 +66,7 @@ void setup() {
   otaSettingsService.begin();
   apSettingsService.begin();
   wifiSettingsService.begin();
+  motorSettingsService.begin();
 
   // Serving static resources from /www/
   server.serveStatic("/js/", SPIFFS, "/www/js/");
@@ -96,4 +102,5 @@ void loop() {
   apSettingsService.loop();
   ntpSettingsService.loop();
   otaSettingsService.loop();
+  motorSettingsService.loop();
 }

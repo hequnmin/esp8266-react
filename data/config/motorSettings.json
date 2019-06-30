@@ -1,0 +1,7 @@
+{
+    "motor_mode": 0,
+    "motor_freq_pin": 5,
+    "motor_freq_val": 512,
+    "motor_direct_pin": 4,
+    "motor_direct_val": 0
+}
