@@ -30,7 +30,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 
-import GraphicEq from '@material-ui/icons/GraphicEq';
+import NetworkCheckIcon from '@material-ui/icons/NetworkCheck';
 
 import { APP_NAME } from '../constants/App';
 import { withAuthenticationContext } from '../authentication/Context.js';
@@ -140,7 +140,7 @@ class MenuAppBar extends React.Component {
           </ListItem>
           <ListItem to='/motor/' selected={path.startsWith('/motor/')} button component={Link}>
             <ListItemIcon>
-              <GraphicEq />
+              <NetworkCheckIcon />
             </ListItemIcon>
             <ListItemText primary="Motor Servo" />
           </ListItem>
