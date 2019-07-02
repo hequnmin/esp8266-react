@@ -11,6 +11,11 @@ void MotorStatus::motorStatus(AsyncWebServerRequest *request) {
   JsonObject root = response->getRoot();
 
   root["active"] =  0;
+  root["motor_mode"] = 0;
+  root["motor_freq_pin"] = 5;
+  root["motor_freq_val"] = 256,
+  root["motor_direct_pin"] = 4;
+  root["motor_direct_val"] = 1;
 
   response->setLength();
   request->send(response);
