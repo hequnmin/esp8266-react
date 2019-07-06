@@ -17,6 +17,7 @@
 #include <OTASettingsService.h>
 #include <AuthenticationService.h>
 #include <silkworm/MotorSettingsService.h>
+#include <silkworm/StepSettingsService.h>
 
 #include <WiFiScanner.h>
 #include <WiFiStatus.h>
@@ -36,6 +37,7 @@ NTPSettingsService ntpSettingsService = NTPSettingsService(&server, &SPIFFS, &se
 OTASettingsService otaSettingsService = OTASettingsService(&server, &SPIFFS, &securitySettingsService);
 AuthenticationService authenticationService = AuthenticationService(&server, &securitySettingsService);
 MotorSettingsService motorSettingsService = MotorSettingsService(&server, &SPIFFS, &securitySettingsService);
+StepSettingsService stepSettingsService = StepSettingsService(&server, &SPIFFS, &securitySettingsService);
 
 WiFiScanner wifiScanner = WiFiScanner(&server, &securitySettingsService);
 WiFiStatus wifiStatus = WiFiStatus(&server, &securitySettingsService);
@@ -103,4 +105,5 @@ void loop() {
   ntpSettingsService.loop();
   otaSettingsService.loop();
   motorSettingsService.loop();
+  stepSettingsService.loop();
 }

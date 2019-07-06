@@ -73,7 +73,7 @@ class MotorStatus extends Component {
 							<GraphicEqIcon />
 						</Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Freq MHz" secondary={data.motor_freq_val} />
+          <ListItemText primary="Freq Hz" secondary={data.motor_freq_val} />
         </ListItem>
         <Divider variant="inset" component="li" />
         <ListItem>
@@ -89,11 +89,11 @@ class MotorStatus extends Component {
           <ListItemAvatar>
             <Avatar>
 							{
-								data.motor_dirc ? <RotateRightIcon /> : <RotateLeftIcon />
+								data.motor_direct_val ? <RotateRightIcon /> : <RotateLeftIcon />
 							}
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Direct (Anti)clockwise" secondary={data.motor_dirc ? "Clockwise" : "Anticlockwise"} />
+          <ListItemText primary="Direct" secondary={data.motor_direct_val ? "Clockwise" : "Anticlockwise"} />
         </ListItem>
 				<Divider variant="inset" component="li" />
         <ListItem>
