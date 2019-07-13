@@ -16,9 +16,11 @@ void StepSettingsService::loop() {
 	}    
 }
 
+void StepSettingsService::manageStart(){
+
+}
+
 void StepSettingsService::manageStep(){
-	Serial.print("currentMillis:");
-	Serial.println(millis());
 	if (_stepMode == 0) {
 
   	} else {
@@ -27,14 +29,23 @@ void StepSettingsService::manageStep(){
 }
 
 void StepSettingsService::readFromJsonObject(JsonObject& root) {
-  _stepMode = root["step_mode"];
+	_stepMode = root["step_mode"];
 }
 
 void StepSettingsService::writeToJsonObject(JsonObject& root) {
-  root["step_mode"] = _stepMode;
+	root["step_mode"] = _stepMode;
 }
 
 void StepSettingsService::onConfigUpdated() {
-  _lastManaged = millis() - MANAGE_STEP_DELAY;
+  	_lastManaged = millis() - MANAGE_STEP_DELAY;
+
+	stepNext = 0;
+    handleStep();
+}
+
+void StepSettingsService::handleStep(void) {
+
+
+
 }
 
