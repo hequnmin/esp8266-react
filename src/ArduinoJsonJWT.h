@@ -1,7 +1,6 @@
 #ifndef ArduinoJsonJWT_H
 #define ArduinoJsonJWT_H
 
-#include <Arduino.h>
 #include <ArduinoJson.h>
 #include <libb64/cdecode.h>
 #include <libb64/cencode.h>
